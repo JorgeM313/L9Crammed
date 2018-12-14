@@ -2,7 +2,7 @@
 
 //Provided for testing. A different main (with same usage/assumptions) may be used to grade your submission.
 
-
+//THIS IS WHERE THE PROFESSOR'S LINKEDLIST.H CODE STARTS
 
 #include <iostream>
 #include <stdlib.h>
@@ -79,6 +79,7 @@ public:
 
 };
 
+//THIS IS WHERE THE CODE FOR LINKEDLIST.CPP STARTS
 
 template <class T>
 int LinkedList<T>::recursiveSum(Node<T> * h)
@@ -195,7 +196,7 @@ LinkedList<T>::~LinkedList();
 }
 
 
-
+//OBVIOUSLY THIS IS WHERE THE CODE FOR THE PROFESSOR'S MAIN STARTS
 
 int main()
 
