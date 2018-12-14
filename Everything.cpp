@@ -184,7 +184,15 @@ void LinkedList<T>::remove(T item)
 	curr->next = NULL;
 	}
 }
-LinkedList::~LinkedList();
+template <class T>
+LinkedList<T>::~LinkedList();
+{
+	
+	Node<T> *ptr = head;
+	ptr = head->next;
+	delete head;
+	
+}
 
 
 
