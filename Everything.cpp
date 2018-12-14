@@ -1,14 +1,14 @@
-/CPSC 121 Lab 9
+//CPSC 121 Lab 9
 
 //Provided for testing. A different main (with same usage/assumptions) may be used to grade your submission.
 
-//THIS IS WHERE THE PROFESSOR'S LINKEDLIST.H CODE STARTS
+
 
 #include <iostream>
 #include <stdlib.h>
 
 
-
+//This is where LinkedList.h starts. 
 using namespace std;
 
 template <class T>
@@ -33,7 +33,7 @@ private:
 
 	Node<T> * head;
 
-	//Part of extra credit
+	//Extra credit thing
 
 	int recursiveSum(Node<T> * h = NULL);
 
@@ -41,7 +41,8 @@ public:
 
 	//Constructor initializes values upon declaration
 
-	LinkedList() {
+	LinkedList() 
+	{
 
 		head = NULL;
 
@@ -71,8 +72,7 @@ public:
 
 	void remove(T);
 
-	int startRecursiveFunction() 
-	{
+	int startRecursiveFunction() {
 
 		return recursiveSum(head);
 
@@ -81,126 +81,128 @@ public:
 };
 
 //THIS IS WHERE THE CODE FOR LINKEDLIST.CPP STARTS
-
 template <class T>
 int LinkedList<T>::recursiveSum(Node<T> * h)
 {
-	if(h != NULL) 
-	{
-		return h->data+recursiveSum(h->next);
-	} 
-	
-	else 
-	{
-		return 0;
-	}
+if(h != NULL)
+{
+return h->data+recursiveSum(h->next);
+} 
+else 
+{
+return 0;
 }
+}
+
 template <class T>
 int LinkedList<T>::size()
 {
-	int count = 0;
-	Node<T> * curr = head;
-	while(curr != NULL) {
-	count++;
-	curr= curr->next;
-	}
-	return count;
+int count = 0;
+Node<T> * curr = head;
+while(curr != NULL) 
+{
+count++;
+curr= curr->next;
 }
+return count;
+}
+
 template <class T>
 void LinkedList<T>::display()
 {
-	Node<T> * curr = head;
-	if(curr == NULL) {
-	cout << "List is empty" << endl;
-	}
-	while(curr!=NULL) {
-	cout << curr->data << " ";
-	curr = curr->next;
-	}
-	cout << endl;
+Node<T> * curr = head;
+if(curr == NULL) 
+{
+cout << "List is empty" << endl;
+}
+while(curr!=NULL) 
+{
+cout << curr->data << " ";
+curr = curr->next;
+}
+cout << endl;
 }
 template <class T>
 void LinkedList<T>::insertItemSorted(T item)
 {
-	Node<T> *newNode = new Node<T>();
-	newNode->data = item;
-	newNode->next = NULL;
-	if(head==NULL) {
-	//its the first node inserted
-		head = newNode;
-		return;
-	}
-	if(item<head->data) {
-	//insert at first
-		newNode->next = head;
-		head = newNode;
-		return;
-	}
-	Node<T> *curr = head;
-	Node<T> *prev;
-	while(curr!=NULL && curr->data < item) {
-		prev = curr;
-		curr = curr->next;
-	}
-	if(curr == NULL) {
-	//insert at last
-	prev->next = newNode;
-	} else {
-	//now curr->data is larger than item, henc it is inserted between prev and curr.
-	prev->next = newNode;
-	newNode->next = curr;
-	}
+Node<T> *newNode = new Node<T>();
+newNode->data = item;
+newNode->next = NULL;
+if(head==NULL) {
+//its the first node inserted
+head = newNode;
+return;
+}
+if(item<head->data) {
+//insert at first
+newNode->next = head;
+head = newNode;
+return;
+}
+Node<T> *curr = head;
+Node<T> *prev;
+while(curr!=NULL && curr->data < item) {
+prev = curr;
+curr = curr->next;
+}
+if(curr == NULL) {
+//insert at last
+prev->next = newNode;
+} else {
+//now curr->data is larger than item, henc it is inserted between prev and curr.
+prev->next = newNode;
+newNode->next = curr;
+}
 }
 template <class T>
 bool LinkedList<T>::findValue(T item)
 {
-	Node<T> *curr = head;
-	while(curr !=NULL) {
-		if(curr->data == item) {
-	return true;
-	}
-	curr = curr->next;
-	}
-	return false;
-	}
+Node<T> *curr = head;
+while(curr !=NULL) {
+if(curr->data == item) {
+return true;
+}
+curr = curr->next;
+}
+return false;
+}
 template <class T>
 void LinkedList<T>::remove(T item)
 {
-	if(head == NULL) {
-		cout << "List is empty" << endl;
-		return;
-	}
-	if(head->data == item) {
-	//if first item has to be removed
-	head = head->next;
-	return;
-	}
-	Node<T> *curr = head;
-	Node<T> *prev;
-
-	while(curr!=NULL && curr->data!=item) {
-	prev = curr;
-	curr=curr->next;
+if(head == NULL) {
+cout << "List is empty" << endl;
+return;
 }
-	if(curr == NULL) {
-	cout << "Item not found" << endl;
-	} 	else {
-	prev->next = curr->next;
-	curr->next = NULL;
-	}
+if(head->data == item) {
+//if first item has to be removed
+head = head->next;
+return;
+}
+Node<T> *curr = head;
+Node<T> *prev;
+
+while(curr!=NULL && curr->data!=item) {
+prev = curr;
+curr=curr->next;
+}
+if(curr == NULL) {
+cout << "Item not found" << endl;
+} else {
+prev->next = curr->next;
+curr->next = NULL;
+}
 }
 template <class T>
-LinkedList<T>::~LinkedList();
+LinkedList<T>::~LinkedList()
 {
-	
-	Node<T> *ptr = head;
+	Node<T> * ptr = head;
 	ptr = head->next;
 	delete head;
-	
+
 }
 
 
-//OBVIOUSLY THIS IS WHERE THE CODE FOR THE PROFESSOR'S MAIN STARTS
+//THIS IS WHERE THE CODE FOR THE PROFESSOR'S MAIN FUNCTION STARTS
 
 int main()
 
@@ -218,7 +220,7 @@ int main()
 
 	mylist.display();
 
-	cout << "EXTRA CREDIT FUNCTION: " << mylist.startRecursiveFunction() << endl;
+	cout << "EXTRA CREDIT: " << mylist.startRecursiveFunction() << endl;
 
 	cout << "Size after insertion: " << mylist.size() << endl;
 
@@ -237,15 +239,8 @@ int main()
 //If you aren't attempting extra credit, just include the function definition below to avoid errors
 
 /*
-
 template <class T>
-
 int LinkedList::recursiveSum(Node<T> * n)
-
 {
-
-
-
 }
-
 */
