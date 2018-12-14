@@ -71,7 +71,8 @@ public:
 
 	void remove(T);
 
-	int startRecursiveFunction() {
+	int startRecursiveFunction() 
+	{
 
 		return recursiveSum(head);
 
@@ -84,10 +85,13 @@ public:
 template <class T>
 int LinkedList<T>::recursiveSum(Node<T> * h)
 {
-	if(h != NULL) {
+	if(h != NULL) 
+	{
 		return h->data+recursiveSum(h->next);
 	} 
-	else {
+	
+	else 
+	{
 		return 0;
 	}
 }
@@ -214,7 +218,7 @@ int main()
 
 	mylist.display();
 
-	//mylist.startRecursiveFunction();
+	cout << "EXTRA CREDIT FUNCTION: " << mylist.startRecursiveFunction() << endl;
 
 	cout << "Size after insertion: " << mylist.size() << endl;
 
