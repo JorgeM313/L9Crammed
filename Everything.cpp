@@ -72,7 +72,8 @@ public:
 
 	void remove(T);
 
-	int startRecursiveFunction() {
+	int startRecursiveFunction() 
+	{
 
 		return recursiveSum(head);
 
@@ -84,14 +85,14 @@ public:
 template <class T>
 int LinkedList<T>::recursiveSum(Node<T> * h)
 {
-if(h != NULL)
-{
-return h->data+recursiveSum(h->next);
-} 
-else 
-{
-return 0;
-}
+	if(h != NULL)
+	{
+	     return h->data+recursiveSum(h->next);
+	} 
+	else 
+	{
+	     return 0;
+	}
 }
 
 template <class T>
@@ -100,10 +101,10 @@ int LinkedList<T>::size()
 int count = 0;
 Node<T> * curr = head;
 while(curr != NULL) 
-{
-count++;
-curr= curr->next;
-}
+	{
+	     count++;
+	     curr= curr->next;
+	}
 return count;
 }
 
