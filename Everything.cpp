@@ -184,10 +184,8 @@ void LinkedList<T>::remove(T item)
 	curr->next = NULL;
 	}
 }
+LinkedList::~LinkedList();
 
-
-
-template class LinkedList<int>;
 
 
 
